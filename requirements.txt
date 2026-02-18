@@ -1,0 +1,5 @@
+streamlit
+huggingface_hub
+faiss-cpu
+sentence-transformers
+numpy
