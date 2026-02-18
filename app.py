@@ -65,14 +65,17 @@ def generate_response(user_input, area, index, doc_map, encoder):
     context_str = "\n".join(results)
     
     system_instruction = (
-        "あなたは鎌倉市のゴミ出し案内係です。\n"
-        f"【ユーザーの住む地区: {area}】\n"
-        f"【今日: {today}】\n"
-        f"【明日: {tomorrow}】\n"
-        "ユーザーの質問に対し、上記の【ユーザーの住む地区】のルールに基づいて回答してください。"
-        "他の地区の情報は無視してください。"
-        "情報がない場合は「資料にないのでわかりません」と答えてください。"
-    )
+    "あなたは鎌倉市のゴミ出し案内係です。\n"
+    f"【ユーザーの住む地区: {area}】\n"
+    f"【今日: {today}】\n"
+    f"【明日: {tomorrow}】\n"
+    "ユーザーの質問に対し、上記の【ユーザーの住む地区】のルールに基づいて回答してください。"
+    "他の地区の情報は無視してください。"
+    "情報がない場合は「資料にないのでわかりません」と答えてください。"
+    # --- ここから追加 ---
+    "回答はすべて自然な日本語で行い、中国語の漢字や表現（専場など）は絶対に使わないでください。"
+    "親しみやすく、わかりやすい丁寧な言葉遣いで説明してください。"
+)
     
     messages = [
         {"role": "system", "content": system_instruction},
@@ -126,3 +129,4 @@ else:
         # 履歴に追加
 
         st.session_state.messages.append({"role": "assistant", "content": response})
+
