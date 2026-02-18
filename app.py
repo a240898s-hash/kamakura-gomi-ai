@@ -10,7 +10,7 @@ from huggingface_hub import InferenceClient
 # ==========================================
 # ⚡ 設定エリア
 # ==========================================
-HF_TOKEN = "HF_TOKEN"  # ← あなたのトークンに書き換える！
+HF_TOKEN = st.secrets["HF_TOKEN"]  # ← あなたのトークンに書き換える！
 STORE_DIR = "vector_store"
 MODEL_NAME = "intfloat/multilingual-e5-small"
 CHAT_MODEL = "Qwen/Qwen2.5-7B-Instruct"
@@ -124,4 +124,5 @@ else:
                 st.markdown(response)
         
         # 履歴に追加
+
         st.session_state.messages.append({"role": "assistant", "content": response})
